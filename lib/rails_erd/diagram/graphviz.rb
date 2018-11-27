@@ -270,25 +270,6 @@ module RailsERD
         "m_#{name}"
       end
 
-      # Returns the title to be used for the graph.
-      def title
-        case options.title
-        when false then nil
-        when true
-          if domain.name then "#{domain.name} domain model" else "Domain model" end
-        else options.title
-        end
-      end
-
-      # Returns the file name that will be used when saving the diagram.
-      def filename
-        "#{options.filename}.#{options.filetype}"
-      end
-
-      # Returns the default file extension to be used when saving the diagram.
-      def filetype
-        if options.filetype.to_sym == :dot then :none else options.filetype.to_sym end
-      end
 
       def entity_options(entity, attributes)
         label = options[:markup] ? "<#{read_template(:html).result(binding)}>" : "#{read_template(:record).result(binding)}"

@@ -208,6 +208,26 @@ module RailsERD
       }
     end
 
+    # Returns the title to be used for the graph.
+    def title
+      case options.title
+      when false then nil
+      when true
+        if domain.name then "#{domain.name} domain model" else "Domain model" end
+      else options.title
+      end
+    end
+
+    # Returns the file name that will be used when saving the diagram.
+    def filename
+      "#{options.filename}.#{options.filetype}"
+    end
+
+    # Returns the default file extension to be used when saving the diagram.
+    def filetype
+      if options.filetype.to_sym == :dot then :none else options.filetype.to_sym end
+    end
+
     def warn(message)
       puts "Warning: #{message}" if options.warn
     end

@@ -56,6 +56,15 @@ namespace :erd do
 
     say "Done! Saved diagram to #{file}."
   end
+
+  task :nomnoml => [:check_dependencies, :options, :load_models] do
+    say "Generating Entity-Relationship Diagram for #{ActiveRecord::Base.descendants.length} models..."
+
+    require "rails_erd/diagram/nomnoml"
+    file = RailsERD::Diagram::Nomnoml.create
+
+    say "Done! Saved diagram to #{file}."
+  end
 end
 
 desc "Generate an Entity-Relationship Diagram based on your models"
