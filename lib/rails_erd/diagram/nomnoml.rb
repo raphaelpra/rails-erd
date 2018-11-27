@@ -1,8 +1,9 @@
+# encoding: utf-8
 require "rails_erd/diagram"
 
 module RailsERD
   class Diagram
-    class NomnomlDiagram < Diagram
+    class Nomnoml < Diagram
       setup do
         @output = title ? ["#title: #{title}", ""] : []
       end
